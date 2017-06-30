@@ -1,0 +1,40 @@
+#uses stack to find if parenthesis balenced
+
+def createStack():
+  stack=[]
+  return stack
+
+def stackSize(stack):
+  return len(stack) 
+
+def isempty(x):
+  if stackSize(x)==0:
+    return True
+  else: return False
+    
+def push(stack,ch):
+  stack.append(ch)
+
+def pop(stack):
+  stack.pop()
+
+x=input().strip()
+stack=createStack()
+for i in x:
+  if i in ['(','{','[']:
+    push(stack,i)
+  if i==')':
+    #pops only if the opening parenthesis is of the same kind
+    if stack[-1]=='(':
+      pop(stack)
+  if i=='}':
+    if stack[-1]=='{':
+      pop(stack)
+  if i==']':
+    if stack[-1]=='[':
+      pop(stack)
+if len(stack)!=0:
+  #if stack empty
+  print("not balenced")
+else:
+  print("balenced")
