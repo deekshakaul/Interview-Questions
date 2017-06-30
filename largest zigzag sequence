@@ -1,0 +1,35 @@
+#finds zigzag sequence with maximum sum
+
+m,n=map(int,input().split(' '))
+matrix = []
+
+#reads matrix elements
+
+for i in range(0,m):
+    matrix.append([])
+    for j in range(0,n):
+        x=int(input())
+        matrix[i].append(x)
+
+#prints matrix
+
+for i in range(0,m):
+    for j in range(0,n):
+        print(matrix[i][j],end=' ')
+    print('\n')
+    
+# col and imax are used to ensure the sequence remains zigzag
+
+col=-1
+sum=0
+imax=-1
+for i in range(0,m):
+    max=0
+    for j in range(0,n):
+      if max< matrix[i][j] and j!=imax:
+        max=matrix[i][j]
+        col=j
+    sum=sum+max
+    imax=col
+    
+print(sum)
