@@ -1,0 +1,11 @@
+def smallest(x,y):
+  
+  # if x<y is true, -(x<y) is 11111111 if the condition is false, -(x<y) is 00000000.
+    return y^((x^y) & -(x<y))
+  
+def largest(x,y):
+  return y^((x^y) & -(x>y))
+  
+x,y,z=map(int,input().split(' '))
+print("smallest of the three is ", smallest(smallest(x,y),z))
+print("largest of the three is ", largest(largest(x,y),z))
