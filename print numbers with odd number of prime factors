@@ -1,0 +1,44 @@
+# to find the numbers between a and b that have odd number of prime factors
+
+# array stores the values of first 20 prime numbers. in case a prime factor of the number is not present in array, 
+# array is updated till the prime factor is found
+
+array=[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73]
+
+#req stores result
+req=[]
+
+#finds the next primt number
+
+def findNextPrime(array):
+  flag=0
+  n=array[-1]+1
+  while(flag==0):
+    for i in range(2,n):
+      if n%i==0:
+        i=i+1
+      else:
+        array.append()
+        flag=1
+    n=n+1
+
+#finds the required numbers
+def findNumbers(a,b):
+  for i in range(a,b+1):
+    n=i
+    count=0
+    while(n!=1):
+      for x in array:
+        while(n%x==0 and n!=1):
+          n=n/x
+          count=count+1
+      if n!=1:
+        findNextPrime(array)
+    if count%2==1:
+      req.append(i)
+
+  print(req)
+  
+# driver program
+a,b=map(int,input().split(' '))  
+findNumbers(a,b)
