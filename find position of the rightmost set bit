@@ -1,0 +1,6 @@
+# identifies the position of rightmost set bit in the binary representation of the number
+
+import math
+def posRightmostBit(n):
+  return int(math.log(n^(n&(n-1)),2))
+print(posRightmostBit(38),"from right")
