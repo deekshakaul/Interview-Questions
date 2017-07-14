@@ -1,0 +1,51 @@
+#The first line of input consists of an integer T denoting the number of test cases .
+#Each test case consists of three lines first line consists of an integer N denoting 
+#the number of students of class second line consists N spaced integers denoting 
+#the marks of students and third line consists of an integer K which denotes the 
+#number of top scores you have to find.
+
+#use heapsrot
+def heapify(a,n,i):
+    largest=i
+    l=2*i+1
+    r=2*i+2
+    if(l<n and a[l]<a[largest]):
+        largest=l
+    if(r<n and a[r]<a[largest]):
+        largest=r
+    if(largest!=i):
+        a[i],a[largest]=a[largest],a[i]
+        heapify(a,n,largest)
+    
+def heapsort(a,n):
+    
+    for i in range(n,-1,-1):
+        heapify(a,n,i)
+    for i in range(n-1,0,-1):
+        a[i],a[0]=a[0],a[i]
+        heapify(a,i,0)
+
+NoOfTestCases=int(input())
+for i in range(0,NoOfTestCases):
+    noOfStudents=int(input())
+    arr=[]
+    back=[]
+    arr=input().strip().split(' ')
+    for i in arr:
+        back.append(i)
+    k=int(input())
+    for i in arr:
+        i=int(i)
+    res=[]
+    heapsort(arr,len(arr))
+    for i in arr:
+        if i in res:
+            pass
+        else:
+            res.append(i)
+    str1=''
+    for i in range(0,k):
+        for j in range(0,len(arr)):
+            if res[i]==back[j]:
+                str1=str1+str(j)+' '
+    print(str1)
