@@ -1,0 +1,27 @@
+a="1[b]2[a]"
+digits=['1','2','3','4','5','6','7','8','9','0']
+#use two stack. one to store count another to store substring
+intStack=[]
+strStack=[]
+res=""
+i=0
+while i<len(a):
+  count=0
+  if a[i] in digits:
+    while a[i] in digits:
+      count=count*10+int(a[i])
+      i=i+1
+    intStack.append(count)
+  elif a[i] !=']':
+    strStack.append(a[i])
+  elif a[i]==']':
+    temp=""
+    while len(strStack)>0:
+      temp=strStack.pop()+temp
+    if temp!="":
+        temp=temp*intStack.pop()
+    res=res+temp
+  i=i+1
+while len(intStack)>0:
+    res=res*intStack.pop()
+print(res)
