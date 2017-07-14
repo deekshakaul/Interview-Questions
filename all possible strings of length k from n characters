@@ -1,0 +1,16 @@
+def findStrings(a,k):
+  n=len(a)
+  a=a*k
+  res=[[]]
+  for x in a:
+    res=res + [y+[x] for y in res]
+  temp=[]
+  for i in res:
+    if len(i)==k:
+      if (''.join(i)) not in temp:
+        temp.append(''.join(i))
+  print(temp,end=',')
+
+a=list(input().split(' '))
+k=int(input())
+findStrings(a,k)
