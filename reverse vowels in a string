@@ -1,0 +1,23 @@
+def reverseVowel(a):
+  i=0
+  j=len(a)-1
+  vowel=['a','e','i','o','u']
+  while(i<j and i<len(a) and j>0):
+    if a[i] in vowel and a[j] in vowel:
+      temp=a[i]
+      a[i]=a[j]
+      a[j]=temp
+      i=i+1
+      j=j-1
+    elif a[i] in vowel and a[j] not in vowel:
+      j=j-1
+    elif a[j] in vowel and a[i] not in vowel:
+      i=i+1
+    else:
+      i=i+1
+      j=j-1      
+  print(''.join(a))
+
+a="hello"
+print(a)
+reverseVowel(list(a))
