@@ -1,0 +1,23 @@
+def countPattern(str,pattern):
+  string=list(str)
+  i=0
+  k=0
+  count=0
+  while i<len(string)-k:
+    flag=False
+    for k in range(0,len(pattern)):
+      if string[i+k]==pattern[k]:
+        flag=True
+    i=i+1
+    if flag==True:
+      count=count+1
+      for j in range(i+k,len(string)):
+        string[j-k]=string[j]
+      for i in range(0,len(pattern)):
+        string.pop()
+      i=0
+  print(count)
+    
+str=input().strip()
+pattern=input().strip()
+countPattern(str,pattern)
