@@ -1,0 +1,13 @@
+# Delete consecutive same words in a sequence
+# use stack. traverse string. Pop if top of stack same as the word. Else push word into stack.
+a=input().strip().split(' ')
+res=[]
+for i in a:
+  if len(res)==0:
+    res.append(i)
+  else:
+    if res[-1]==i:
+      res.pop()
+    else:
+      res.append(i)
+print(len(res))
