@@ -1,0 +1,30 @@
+#1;11;21;1211;111221; 
+
+#make use of two queues, q1 to store element and q2 to store count of element
+def pattern(n):
+  a="1"
+  t=0
+  res=[]
+  for f in range(n):
+    q1=[]
+    q2=[]
+    print(a)
+    for i in a:
+      if len(q1)==0:
+        q1.append(i)
+        q2.append(1)
+      elif i==q1[-1]:
+        t=q2.pop()
+        q2.append(t+1)
+      else :
+        q1.append(i)
+        q2.append(1)
+    temp=""
+    for i in range(0,len(q1)):
+      temp=temp+str(q2[i])+' '+q1[i]
+    a=temp.strip().split(' ')
+    b=''.join(a)
+    a=b
+  
+n=int(input().strip())
+pattern(n)
