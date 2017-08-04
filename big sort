@@ -1,0 +1,18 @@
+import sys
+
+n = int(input().strip())
+unsorted = []
+unsorted_i = 0
+maxlen=0
+length={}
+for unsorted_i in range(n):
+    unsorted_t = input().strip()
+    unsorted.append(unsorted_t)
+    l=len(unsorted_t)
+    if l not in length:
+        length[l]=[]
+    length[l].append(unsorted_t)
+
+for k in sorted(length):    
+    for i in sorted(length[k]):
+        print(i)
