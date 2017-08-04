@@ -1,0 +1,12 @@
+T = int(input())
+for t in range(T):
+    a , b = map(int, input().split(' '))
+    res = 0
+    for k in range(32, -1, -1):
+        s = 1<<k
+        if b&s:
+            if a&s:
+                res |= s
+            else:
+                break
+    print(res)
