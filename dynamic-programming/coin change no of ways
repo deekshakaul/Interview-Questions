@@ -1,0 +1,26 @@
+import sys
+#n=sum; c is the coin values
+def getWays(n, c):
+    mat=[[0 for i in range(n+1)] for j in range(len(c))]
+    c.sort()
+
+    for i in range(0,len(c)):
+      mat[i][0]=1
+    if c[0]==1:
+      for i in range(0,n+1):
+        mat[0][i]=1      
+
+    for i in range(0,len(c)):
+      for j in range(0,n+1):
+        if c[i]>j:
+          mat[i][j]=mat[i-1][j]
+        else:
+          mat[i][j]=mat[i-1][j]+mat[i][j-c[i]]
+    print(mat[i][j])
+      # Complete this function5
+
+n, m = input().strip().split(' ')
+n, m = [int(n), int(m)]
+c = list(map(int, input().strip().split(' ')))
+# Print the number of ways of making change for 'n' units using coins having the values given by 'c'
+ways = getWays(n, c)
