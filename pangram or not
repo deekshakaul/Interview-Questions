@@ -1,0 +1,20 @@
+s=input().strip()
+s=s.lower()
+s1=[]
+for i in s:
+    if i!=' ':
+        s1.append(i)
+c=0
+sum=0
+asc=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+
+for i in asc:
+    if s1.count(chr(i+97))>0:
+        pass
+    else:
+        c=1
+        break
+if c==1:
+    print('not pangram')
+else:
+    print('pangram')
