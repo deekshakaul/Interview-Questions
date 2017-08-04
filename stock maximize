@@ -1,0 +1,12 @@
+#start iterating from the end. since if we know the price on nth day we will know whether to buy or sell the stock
+test=int(input().strip())
+for t in range(test):
+    n=int(input().strip())
+    profit=0
+    a=list(map(int,input().strip().split(' ')))
+    maxsofar=0
+    for i in range(len(a)-1,-1,-1):
+        if a[i]>=maxsofar:
+            maxsofar=a[i]
+        profit+=maxsofar-a[i]
+    print(profit)
