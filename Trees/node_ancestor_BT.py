@@ -1,5 +1,4 @@
 class Node:
-
     def __init__(self, data):
         self.data = data 
         self.left = None
@@ -7,18 +6,14 @@ class Node:
 
 def printAncestors(root, target):
      
-    # Base case
     if root == None:
         return False
-     
     if root.data == target:
         return True
-
     if (printAncestors(root.left, target) or
         printAncestors(root.right, target)):
         print (root.data)
         return True
-
     return False
  
 root = Node(1)
