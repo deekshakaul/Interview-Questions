@@ -1,0 +1,19 @@
+str=input().strip()
+T=[]
+#T stores the final result
+for i in range(len(str)):
+  T.append([])
+  for j in range(len(str)):
+    T[i].append(0)
+    if i==j:
+      T[i][j]=1
+#l is the length of the subsequence
+for l in range(2,len(str)+1):
+  for i in range(len(str)-l+1):
+    j=l+i-1
+    if str[i]==str[j]:
+      T[i][j]=T[i+1][j-1]+2
+    else:
+      T[i][j]=max(T[i+1][j],T[i][j-1])
+    j+=1
+print(T[0][len(str)-1])      
