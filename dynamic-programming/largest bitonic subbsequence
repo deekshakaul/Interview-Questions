@@ -1,0 +1,19 @@
+a=list(map(int,input().strip().split(' ')))
+n=len(a)
+forward=[1]*n
+backward=[1]*n
+res=[0]*n
+# first calculate for increasing then for decreasing and then combine the results
+for i in range(1,n):
+  for j in range(0,i):
+    if a[i]>a[j]:
+      forward[i]=max(forward[i],forward[j]+1)
+a.reverse()      
+for i in range(1,n):
+  for j in range(0,i):
+    if a[i]>a[j]:
+      backward[i]=max(backward[i],backward[j]+1)
+backward.reverse()
+for i in range(n):
+  res[i]=forward[i]+backward[i]-1
+print(max(res))
