@@ -1,14 +1,12 @@
 #Program to print the left view of binary tree
 # Use level order traversal.
 
-horDist=[]
 bucket=[]
 class node:
   def __init__(self,data=0):
     self.data=data
     self.left=None
     self.right=None
-    self.hd=0
     
 def LeftView(root):
     if root is None:
@@ -16,13 +14,12 @@ def LeftView(root):
     queue = []
     queue.append(root)
     while True:
-      #lq is the length of queue
-      lq=len(queue)
-      if lq==0:
+      length_of_queue=len(queue)
+      if length_of_queue==0:
         break
       else:
         bucket.append([])
-        while(lq > 0):
+        while(length_of_queue > 0):
             bucket[-1].append(queue[0].data)
             
             node = queue.pop(0)
@@ -30,7 +27,7 @@ def LeftView(root):
                 queue.append(node.left)
             if node.right is not None:
                 queue.append(node.right)
-            lq-=1
+            length_of_queue-=1
 
 #driver code 
 root=node(1)
