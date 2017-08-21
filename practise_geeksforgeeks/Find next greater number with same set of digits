@@ -1,0 +1,9 @@
+from collections import Counter
+n=218765
+t=n+1
+num=str(n)
+tnum=str(t)
+while Counter(num)!=Counter(tnum):
+  t+=1
+  tnum=str(t)
+print(t)
