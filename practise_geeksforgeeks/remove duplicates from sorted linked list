@@ -1,0 +1,29 @@
+class node:
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+
+def RemoveDuplicates(a):
+  temp=a
+  while a.next!=None:
+    if a.next.data==a.data:
+      a.next=a.next.next
+    else:
+      a=a.next
+  return temp
+      
+
+a=node(1)
+a.next=node(2)
+a.next.next=node(3)
+a.next.next.next=node(3)
+a.next.next.next.next=node(3)
+a.next.next.next.next.next=node(5)
+a.next.next.next.next.next.next=node(5)
+a.next.next.next.next.next.next.next=node(6)
+
+
+list=RemoveDuplicates(a)
+while a!=None:
+  print(a.data)
+  a=a.next
