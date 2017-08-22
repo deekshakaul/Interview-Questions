@@ -1,0 +1,36 @@
+class node:
+  def __init__(self,data):
+    self.data  = data
+    self.next = None
+
+def Merge(A, B):
+  if A is None and B is None:
+    return None
+  
+  if A is None:
+    return B
+
+  if B is None:
+    return A
+  
+  if A.data < B.data:
+    smaller = A
+    smaller.next = Merge(A.next, B)
+  else:
+    smaller = B
+    smaller.next = Merge(A, B.next)
+  
+  return smaller
+
+a = node(1)
+a.next = node(2)
+a.next.next = node(5)
+
+b = node(3)
+b.next = node(4)
+b.next.next = node(6)
+
+list = Merge(a,b)
+while list is not None:
+  print(list.data,end=' ')
+  list = list.next
