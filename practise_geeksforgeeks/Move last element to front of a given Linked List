@@ -1,0 +1,40 @@
+class node:
+  def __init__(self,data=None):
+    self.next=None
+    self.data=data
+      
+  def printList(self):
+    head=self
+    while head!=None:
+      print(head.data,end=' ')
+      head=head.next
+    print()
+  
+  def add(self,data):
+    if self.data ==None:
+      self.data=data
+      self.next=None
+    else:
+      while self.next!=None:
+        self=self.next
+      self.next=node(data)
+    return self
+  
+  def move(self):
+    head=self
+    ptr=self
+    while ptr.next.next!=None:
+      ptr=ptr.next
+    temp=ptr.next
+    temp.next=head
+    head=temp
+    ptr.next=None
+    return head
+    
+l1=node(2)
+l1.add(3)
+l1.add(4)
+l1.add(5)
+l1.printList()
+l1=l1.move()
+l1.printList()
