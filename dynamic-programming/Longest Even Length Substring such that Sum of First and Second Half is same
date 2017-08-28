@@ -1,0 +1,17 @@
+# http://www.geeksforgeeks.org/longest-even-length-substring-sum-first-second-half/
+string=input().strip()
+string=list(map(int,list(string)))
+strlen=len(string)
+t=[[0 for i in range(strlen)] for j in range(strlen)]
+i=0
+j=0
+maxlen=0
+while i<strlen:
+  j=i+1
+  while j<strlen:
+    if sum(string[i:i+int((j-i)/2)+1])==sum(string[i+1+int((j-i)/2):j+1]):
+      t[i][j]=j-i+1
+      maxlen=max(maxlen,j-i+1)
+    j+=2
+  i+=1
+print(maxlen)      
