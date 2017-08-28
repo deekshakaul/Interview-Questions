@@ -1,0 +1,10 @@
+#http://www.geeksforgeeks.org/sort-even-numbers-ascending-order-sort-odd-numbers-descending-order/
+numbers=list(map(int,input().strip().split(' ')))
+for i in range(len(numbers)):
+  if numbers[i]%2==1:
+    numbers[i]=numbers[i]*-1
+numbers.sort()
+for i in range(len(numbers)):
+  if numbers[i]<0:
+    numbers[i]=numbers[i]*-1
+print(numbers)
