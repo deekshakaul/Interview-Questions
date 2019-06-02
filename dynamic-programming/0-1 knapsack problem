@@ -10,15 +10,13 @@ for i in range(len(weights)):
         if j==0:
             m[i][j] = 0
         elif j < weights[i]:
-            try:
+            if i>0:
                 m[i][j] = m[i-1][j]
-            except:
-                # in case i=0 --> m[i-1][j] will give error
+            else:
                 m[i][j] = 0
         else:
-            try:
+            if i>0:
                 m[i][j] = max(m[i-1][j], (values[i] + m[i-1][j-weights[i]]))
-            except:
-                # in case i=0 --> m[i-1][j] will give error
+            else:
                 m[i][j] = values[i]
 print(m[-1][-1])
