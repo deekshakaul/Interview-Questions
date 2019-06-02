@@ -1,0 +1,24 @@
+#0/1 knapsack
+weights = list(map(int,input().strip().split(' ')))
+values = list(map(int,input().strip().split(' ')))
+totalWeights = int(input().strip())
+
+m = [[0 for i in range(totalWeights+1)] for j in range(len(weights))] #initialise array of zeros
+
+for i in range(len(weights)):
+    for j in range(totalWeights+1):
+        if j==0:
+            m[i][j] = 0
+        elif j < weights[i]:
+            try:
+                m[i][j] = m[i-1][j]
+            except:
+                # in case i=0 --> m[i-1][j] will give error
+                m[i][j] = 0
+        else:
+            try:
+                m[i][j] = max(m[i-1][j], (values[i] + m[i-1][j-weights[i]]))
+            except:
+                # in case i=0 --> m[i-1][j] will give error
+                m[i][j] = values[i]
+print(m[-1][-1])
