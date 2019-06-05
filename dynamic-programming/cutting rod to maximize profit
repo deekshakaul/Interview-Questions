@@ -1,0 +1,19 @@
+# Given a rod of length n inches and an array of prices that contains prices of all pieces of size smaller than n. 
+# Determine the maximum value obtainable by cutting up the rod and selling the pieces
+lengths = list(map(int, input().strip().split(' ')))
+profits = list(map(int, input().strip().split(' ')))
+totalLength = int(input().strip())
+
+profitMatrix = [[0 for i in range(totalLength+1)] for j in range(len(lengths))]
+
+for length in range(totalLength+1):
+# if there is only one possible length profit can only be multiples of that length
+  profitMatrix[0][length] = length * profits[0]
+for i in range(1, len(lengths)):
+  for j in range(1, totalLength+1):
+    if j!=0:
+      if j>lengths[i]:
+        profitMatrix[i][j] = max(profitMatrix[i-1][j], profitMatrix[i][j-lengths[i]]+profits[i])
+      else:
+        profitMatrix[i][j] = profitMatrix[i-1][j]
+print(profitMatrix[-1][-1])
