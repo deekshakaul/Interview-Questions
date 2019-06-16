@@ -1,4 +1,6 @@
 # http://www.geeksforgeeks.org/find-compatibility-difference-two-arrays/
+
+# O(n^2) solution
 a=input().strip().split(' ')
 b=input().strip().split(' ')
 n=len(a)
