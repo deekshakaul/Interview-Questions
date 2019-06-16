@@ -24,9 +24,7 @@ class node:
     ptr=self
     while ptr!=None:
       a.add(ptr.data)
-      #a.printList()
       b.add(ptr.next.data)
-      #b.printList()
       ptr=ptr.next.next
     
 l1=node(2)
