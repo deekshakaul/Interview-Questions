@@ -1,0 +1,17 @@
+#https://www.geeksforgeeks.org/find-compatibility-difference-two-arrays/ ---> for multiple test cases
+
+# O(n)solution -> per test case
+
+import math
+
+testCases = int(input().strip())
+numberOfRatings = int(input().strip())
+ratingsSet1 = list(map(int, input().strip().split(' ')))
+ratingsSet2 = list(map(int, input().strip().split(' ')))
+
+ratingDiff = []
+for t in range(0, testCases):
+    for i in range(1,numberOfRatings+1):
+        diff = abs(ratingsSet1.index(i) - ratingsSet2.index(i))
+        ratingDiff.append(diff)
+    print(max(ratingDiff))
