@@ -1,0 +1,21 @@
+# https://www.hackerrank.com/challenges/fair-rations/problem
+
+def fairRations(B):
+    if sum(B) % 2 == 1:
+      return "NO"
+    else:
+      count = 0
+      for i in range(0, len(B) - 1):
+        if B[i] % 2 == 1:
+          B[i] += 1
+          B[i+1] += 1
+          count += 2
+    return count
+
+N = int(input())
+
+B = list(map(int, input().rstrip().split()))
+
+result = fairRations(B)
+
+print(result)
