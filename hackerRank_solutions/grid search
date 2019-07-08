@@ -1,0 +1,67 @@
+#https://www.hackerrank.com/challenges/the-grid-search/problem
+import sys
+import re
+def gridSearch(G, P):
+    for i in G:
+        i = "".join(i)
+    for i in P:
+        i = "".join(i)
+
+    i=0
+    j=0
+    indices = []
+    while i< len(G) and j<len(P):
+        if P[j] in G[i]:
+            index = []
+            index = [m.start() for m in re.finditer('(?={0})'.format(re.escape(P[j])), G[i])]
+            indices.append(index)
+            i+=1
+            j+=1
+        else:
+            i+=1
+            j=0
+            try:
+                if i == len(G) - len(P):
+                  indices.pop()
+                  i-=1
+            except:
+                continue
+    if len(indices)>0:
+        result = set(indices[0])
+        for s in indices[1:]:
+            result.intersection_update(s)
+        if len(result) > 0 and len(indices) > len(P) - 1:
+            return "YES"
+        else:
+            return "NO"
+    return "NO"
+t = int(input())
+
+for t_itr in range(t):
+    RC = input().split()
+
+    R = int(RC[0])
+
+    C = int(RC[1])
+
+    G = []
+
+    for _ in range(R):
+        G_item = input()
+        G.append(G_item)
+
+    rc = input().split()
+
+    r = int(rc[0])
+
+    c = int(rc[1])
+
+    P = []
+
+    for _ in range(r):
+        P_item = input()
+        P.append(P_item)
+
+    result = gridSearch(G, P)
+
+    print(result)
