@@ -1,0 +1,23 @@
+#https://www.hackerrank.com/challenges/happy-ladybugs/problem
+def happyLadybugs(b):
+    for bug in set(b):
+        if bug != '_' and b.count(bug) == 1:
+            return False
+    if b.count('_') == 0:
+        for i in range(1, len(b)-1):
+            if b[i] != b[i-1] and b[i] != b[i+1]:
+                return False
+    return True
+    
+g = int(input())
+
+for g_itr in range(g):
+    n = int(input())
+
+    b = input()
+
+    result = happyLadybugs(b)
+    if result == True:
+        print("YES")
+    else:
+        print('NO')
