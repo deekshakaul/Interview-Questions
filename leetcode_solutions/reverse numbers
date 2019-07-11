@@ -1,0 +1,20 @@
+#https://leetcode.com/problems/reverse-integer/submissions/
+
+result = 0
+def reverse(x: int) -> int:
+  fromString = list(str(x))
+  to=[]
+  while len(fromString)>0:
+    to.append(fromString.pop())
+    if to[-1] == '-':
+      to.pop()
+      result = int(''.join(to)) * (-1)
+    else:
+      result = int(''.join(to))
+  if result > 2147483648 or result < -2147483649:
+    return 0
+  else: 
+    return result
+
+x = int(input().strip())
+print(reverse(x))
