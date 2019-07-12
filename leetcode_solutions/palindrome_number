@@ -1,0 +1,13 @@
+#https://leetcode.com/problems/palindrome-number/
+def isPalindrome(x: int) -> bool:
+    try:
+        if x == int(str(x)[::-1]):
+            return True
+        else:
+            return False
+    except:
+        return False
+
+inputNumber = int(input().strip())
+result = isPalindrome(inputNumber)
+print(result)
