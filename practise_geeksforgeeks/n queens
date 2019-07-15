@@ -1,0 +1,37 @@
+# N-Queens Problem
+
+def isSquareSafe(board, row, col):
+  for i in range(len(board)):
+    if board[row][i] == 1:
+      return False
+  for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+    if board[i][j] == 1:
+      return False
+  for i, j in zip(range(row, len(board), 1), range(col, -1, -1)):
+    if board[i][j] == 1:
+      return False
+  return True
+
+def nQueenUtil(board, col):
+  if col >= len(board) :
+    return True
+  for i in range(len(board)):
+    if isSquareSafe(board, i, col) == True:
+      board[i][col] = 1
+      if nQueenUtil(board, col+1) == True:
+        return True
+      board[i][col] = 0
+  return False
+
+def nQueen(board):
+  if nQueenUtil(board, 0) == False:
+    return False
+  print(board)
+  return True
+
+size = int(input().strip())
+
+board = [[0 for i in range(size)] for i in range(size)]
+isPossible = nQueen(board)
+if not isPossible:
+  print("Not Possible!!!")
