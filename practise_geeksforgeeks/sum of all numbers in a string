@@ -1,0 +1,5 @@
+#https://www.geeksforgeeks.org/calculate-sum-of-all-numbers-present-in-a-string/
+
+import re
+numbers = list(map(int,re.findall('\d+', input().strip())))
+print(sum(numbers))
