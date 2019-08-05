@@ -1,0 +1,19 @@
+# https://www.geeksforgeeks.org/construct-binary-palindrome-by-repeated-appending-and-trimming/
+[n, k] = list(map(int, input().strip().split()))
+indices = []
+i=0
+j=0
+while i<n:
+    if j==k:
+        j=0
+    indices.append(j)
+    j+=1
+    i+=1
+index1 = indices[0]
+index2 = indices[-1]
+for i in range(len(indices)):
+    if indices[i] == index1 or indices[i] == index2:
+        indices[i] = 1
+    else:
+        indices[i] = 0
+print(indices)
