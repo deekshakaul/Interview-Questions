@@ -4,6 +4,7 @@ class Solution(object):
     def fourSum(self, nums, target):
         nums = sorted(nums)
         length = len(nums)
+        # precompute results for edge cases
         if length<4:
             return []
         if length == 4 and sum(nums) != target:
@@ -29,7 +30,6 @@ class Solution(object):
                         l+=1
                     else:
                         r-=1
-        print(result)
         return result
                     
         
